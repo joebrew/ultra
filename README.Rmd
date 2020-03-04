@@ -1,0 +1,46 @@
+---
+title: "Santa Coloma de Queralt a Montserrat"
+output: github_document
+---
+
+
+```{r setup, include=FALSE, echo = FALSE}
+# Basic knitr options
+library(knitr)
+opts_chunk$set(comment = NA, 
+               echo = FALSE, 
+               warning = FALSE, 
+               message = FALSE, 
+               error = TRUE, 
+               cache = FALSE,
+               fig.width = 8.64,
+               fig.height = 4.86,
+               fig.path = 'figures/')
+```
+
+
+```{r}
+# Libraries
+library(tidyverse)
+library(maptools)
+library(rgdal)
+library(plotKML)
+library(ggplot2)
+```
+
+```{r}
+# gpx.raw <- readOGR(dsn ='data/route5251642-Final_Ultra_SCQ-Montserrat.kml')
+# plot(gpx.raw)
+
+df <- readGPX(gpx.file = 'data/route5251642-Final_Ultra_SCQ-Montserrat.gpx')
+```
+
+# Route
+
+```{r}
+plot(df$routes$`Final Ultra SCQ-Montserrat`$lon,
+     df$routes$`Final Ultra SCQ-Montserrat`$lat,
+     type = 'l',
+     xlab = 'Longitude',
+     ylab = 'Latitude')
+```
